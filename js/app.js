@@ -17,7 +17,7 @@ function resetGame() {
  	$('head').append('<link rel="stylesheet" type="text/css" href="styles/reset.css">');
   	$('#count').text('0');
   	$('.guessBox').text('');
-  	$('#feedback').text('Make your Guess!').delay( 800 ).fadeIn( 400 );
+  	$('#feedback').text('Make your Guess!');
 }
 
 
@@ -60,10 +60,19 @@ $("#guessButton").click(function() {
 	alert("Your number is invalid; try a number between 1 and 100");
     } 
 
+ 	else if(parsed == 69 && retval != 69){
+   	$('#feedback').text("nice (but wrong)");
+    	increaseCount(); 
+    }
+
     else if(parsed == retval){
    	$('#feedback').text("You got it!");
     	increaseCount(); 
+		
+	setTimeout(function (){
+
 	resetGame();
+	}, 1100);
     }
 
     else if(diffTotal < 10){
@@ -98,7 +107,11 @@ $("#guessButton").click(function() {
 });
 
 $("a.new").click(function(){
+	setTimeout(function (){
+
 	resetGame();
+	}, 200);
+
  });
 
 
