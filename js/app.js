@@ -56,16 +56,8 @@ $("#guessButton").click(function() {
 	}
  	
   	/* check user guess */
-	if(parsed > 100 && parsed < 0){
-	alert("Your number is invalid; try a number between 1 and 100");
-    } 
 
- 	else if(parsed == 69 && retval != 69){
-   	$('#feedback').text("nice (but wrong)");
-    	increaseCount(); 
-    }
-
-    else if(parsed == retval){
+	if(parsed == retval){
    	$('#feedback').text("You got it!");
     	increaseCount(); 
 		
@@ -74,6 +66,15 @@ $("#guessButton").click(function() {
 	resetGame();
 	}, 1100);
     }
+
+	else if(parsed == 69 && retval != 69){
+   	$('#feedback').text("nice (but wrong)");
+    	increaseCount(); 
+    }
+
+    else if(parsed > 100 || parsed < 0){
+	alert("Your number is invalid; try a number between 1 and 100");
+    } 
 
     else if(diffTotal < 10){
     $('#feedback').text("Very hot!");
